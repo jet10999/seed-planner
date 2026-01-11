@@ -16,7 +16,11 @@ Run the following command in your project directory:
 
 - Create a new Apps Script project linked to a Google Sheet:
 
-    clasp create --type sheets --title "Your Project Name"
+
+**File Naming Rule:**
+Use the `.gs` extension for your Apps Script files (e.g., `main.gs` instead of `main.js`) to match the Apps Script environment. This helps with clarity and organization, as Apps Script natively uses `.gs` files.
+
+If you create new files, save them as `.gs`.
 
 ## 3. .gitignore Setup
 Create a .gitignore file to exclude unnecessary files:
