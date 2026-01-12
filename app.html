@@ -44,16 +44,21 @@ function renderGrid(data, headers) {
 }
 
 function loadSeeds() {
+  console.log('Calling testHello...');
+  google.script.run.withSuccessHandler(function(msg) {
+    console.log('Test message:', msg);
+    document.body.innerHTML += '<div>' + msg + '</div>';
+  }).testHello();
+
+  console.log('Calling testReadAllSeeds...');
   google.script.run.withSuccessHandler(function(seeds) {
-    if (!seeds || seeds.length === 0) return;
-    const headers = Object.keys(seeds[0]);
-    renderTable(seeds, headers);
-    renderCards(seeds, headers);
-    renderGrid(seeds, headers);
-  }).readAllSeeds();
+    console.log('Test seeds data received:', seeds);
+    document.body.innerHTML += '<pre>' + JSON.stringify(seeds, null, 2) + '</pre>';
+  }).testReadAllSeeds();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOMContentLoaded event fired');
   showView('table');
   loadSeeds();
 });

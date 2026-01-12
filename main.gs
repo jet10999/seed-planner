@@ -1,3 +1,22 @@
+// Globally-scoped testReadAllSeeds for frontend testing
+function testReadAllSeeds() {
+  return [
+    { uuid: "123", Flower: "Test Flower", Height: "10" },
+    { uuid: "456", Flower: "Another Flower", Height: "20" }
+  ];
+}
+// Simple test function to verify frontend-backend connection
+function testHello() {
+  return "Hello from Apps Script!";
+}
+
+// Simple test function to return static seed data
+function testReadAllSeeds() {
+  return [
+    { uuid: "123", Flower: "Test Flower", Height: "10" },
+    { uuid: "456", Flower: "Another Flower", Height: "20" }
+  ];
+}
 function doGet() {
   return HtmlService.createTemplateFromFile('index')
     .evaluate()

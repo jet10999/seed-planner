@@ -32,7 +32,7 @@ function testAddSeed() {
   Logger.log('Added seed: ' + JSON.stringify(data));
 }
 
-function testReadAllSeeds() {
+function testReadAllSeeds2() {
   var seeds = readAllSeeds();
   Logger.log('All seeds: ' + JSON.stringify(seeds));
 }
