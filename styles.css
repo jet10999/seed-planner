@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f8f9fa;
+  color: #222;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4caf50;
+  color: white;
+  padding: 1rem;
+}
+
+.nav-links button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-links button.active {
+  background: #388e3c;
+  color: white;
+}
+
+main {
+  padding: 1rem;
+}
+
+.view {
+  margin-top: 1rem;
+}
+
+/* Table View */
+#table-view table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+#table-view th, #table-view td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+#table-view th {
+  background: #e8f5e9;
+}
+
+/* Card View */
+#cards-view {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+}
+.card {
+  min-width: 250px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem;
+  flex: 0 0 auto;
+}
+
+/* Grid View */
+#grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.grid-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1rem;
+}
+
+@media (max-width: 600px) {
+  .navbar h1 {
+    font-size: 1.2rem;
+  }
+  .nav-links button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.7rem;
+  }
+  #table-view table {
+    font-size: 0.9rem;
+  }
+  .card, .grid-card {
+    min-width: 180px;
+    padding: 0.7rem;
+  }
+}
