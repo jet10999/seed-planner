@@ -1,3 +1,14 @@
+function doGet() {
+  return HtmlService.createTemplateFromFile('index')
+    .evaluate()
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+// Helper for including HTML partials
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
 /**
  * Generates a UUID v4 string.
  */
