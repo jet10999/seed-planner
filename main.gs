@@ -1,10 +1,3 @@
-// Globally-scoped testReadAllSeeds for frontend testing
-function testReadAllSeeds() {
-  return [
-    { uuid: "123", Flower: "Test Flower", Height: "10" },
-    { uuid: "456", Flower: "Another Flower", Height: "20" }
-  ];
-}
 // Simple test function to verify frontend-backend connection
 function testHello() {
   return "Hello from Apps Script!";
@@ -88,16 +81,35 @@ function getSheet() {
 }
 
 function readAllSeeds() {
+  Logger.log('readAllSeeds called');
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    Logger.log('Sheet not found!');
+    return [];
+  }
   const range = sheet.getDataRange();
   const values = range.getValues();
+  Logger.log('Sheet values: ' + JSON.stringify(values));
+  if (values.length < 2) {
+    Logger.log('No data rows found!');
+    return [];
+  }
   const headers = values.shift();
-  return values.map(row => {
+  const result = values.map(row => {
     let obj = {};
-    headers.forEach((h, i) => obj[h] = row[i]);
+    headers.forEach((h, i) => {
+      let val = row[i];
+      if (val === undefined || val === null) val = '';
+      else if (val instanceof Date) val = val.toISOString();
+      else if (typeof val === 'object') val = val.toString();
+      obj[h] = val;
+    });
     return obj;
   });
+  Logger.log('Returning: ' + JSON.stringify(result));
+  return result;
+// return [{msg: "If you see this, the right function is being called"}];
 }
 
 function addSeed(data) {
